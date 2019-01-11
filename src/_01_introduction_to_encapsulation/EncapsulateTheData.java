@@ -69,6 +69,9 @@ public class EncapsulateTheData {
 	}
 
 	void setMemberObj(Object memberObj) {
+		if (memberObj instanceof String) {
+			memberObj = new Object();
+		}
 		this.memberObj = memberObj;
 	}
 }
