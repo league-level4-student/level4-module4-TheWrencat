@@ -4,29 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Doctor {
-	ArrayList<Patient> patients = new ArrayList<Patient>();
-	
+	ArrayList<Patient> patList = new ArrayList<Patient>();
+
 	public boolean performsSurgery() {
 		return false;
 	}
-	
+
 	public Object makesHouseCalls() {
 		return false;
 	}
-	//here!
+
+	// here!
 	public List<Patient> getPatients() {
-		return patients;
+		return patList;
 	}
-	
-	public void assignPatient(Patient patient) {
-		patients.add(patient);
-		
+
+	public void assignPatient(Patient p) throws DoctorFullException {
+		if (patList.size() == 3) {
+			throw new DoctorFullException();
+		} else {
+			patList.add(p);
+		}
+
 	}
 
 	public void doMedicine() {
-		// TODO Auto-generated method stub
-		
+		for (int i = 0; i < patList.size(); i++) {
+			patList.get(i).checkPulse();
+		}
 	}
-
 
 }
